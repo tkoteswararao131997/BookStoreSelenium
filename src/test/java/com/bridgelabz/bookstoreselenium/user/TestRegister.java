@@ -19,6 +19,7 @@ public class TestRegister {
 		driver.get("http://localhost:3000/register");
 		BufferedReader csvReader = new BufferedReader(new FileReader("/home/kotti/Desktop/register.csv"));
 		String row;
+		int count=1;
 		csvReader.readLine();
 		while ((row = csvReader.readLine()) != null) {
 		String[] value = row.split(",");
@@ -46,7 +47,14 @@ public class TestRegister {
 		System.out.println(isInAction);
 		if(isInAction==true)
 		{
-		driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div[3]/div[5]/button")).click();
+			System.out.println("test case "+count+" failed");
+			count++;
+			driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div[3]/div[5]/button")).click();
+		}
+		else
+		{
+			System.out.println("test case "+count+" passed");
+			count++;
 		}
 	}
 	}
